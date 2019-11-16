@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+// import 'package:inforedes/src/home.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -38,8 +39,7 @@ class LoginScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25.0)
                     ),
-                    onPressed: () => _alertDialog(context)
-                    // Navigator.pushNamed(context, '/home'),
+                    onPressed: () => Navigator.pushNamed(context, '/home')
                   ),
                 ),
               ],
@@ -50,23 +50,6 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-
-_alertDialog(BuildContext context){
-  showDialog(
-    context: context,
-    builder: (_) => AlertDialog(
-      title: Text("Alert"),
-      content: Text("Done"),
-      actions: <Widget>[
-        FlatButton(child: Text("No"), onPressed: () {},),
-        FlatButton(child: Text("Yes"), onPressed: () {},),
-      ],
-
-    ),
-    barrierDismissible: true,
-
-  );
-}
 
   _buildLoginField(){
     return  Container(

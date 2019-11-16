@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inforedes/cadastrado.dart';
-import 'package:inforedes/login.dart';
-import 'package:inforedes/registro.dart';
-import 'package:inforedes/servico.dart';
-import 'package:inforedes/home.dart';
+import 'package:inforedes/src/home.dart';
+import 'package:inforedes/src/lista.dart';
 
 
 main() => runApp(MyApp());
@@ -24,11 +21,8 @@ class MyApp extends StatelessWidget {
       // home: HomeScreen(),
       initialRoute: '/',
       routes: {
-      '/': (context) => LoginScreen(),
-      '/home': (context) => HomeScreen(),
-      '/servico': (context) => Servico(title: "Serviço"),
-      '/registro': (context) => Registrar(),
-      '/cadastrado': (context) => Cadastrado(),
+      '/': (context) => HomeScreen(),
+      '/lista': (context) => Lista(),
     },
     );
   }

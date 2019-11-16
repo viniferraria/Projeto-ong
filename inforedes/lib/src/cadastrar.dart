@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class Registrar extends StatelessWidget {
+class Cadastro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastro"),
+        automaticallyImplyLeading: false,
       ),
       backgroundColor: Colors.white,
       body: Padding(
@@ -36,7 +37,7 @@ class Registrar extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0)),
                     onPressed: () =>
-                        Navigator.pushNamed(context, '/cadastrado'),
+                      _alertDialog(context),
                   ),
                 ),
               ],
@@ -51,7 +52,6 @@ class Registrar extends StatelessWidget {
 _buildLoginField() {
   return Container(
     decoration: BoxDecoration(
-      border: Border.all(color: Colors.black),
       borderRadius: BorderRadius.all(Radius.circular(25.0)),
       color: CupertinoColors.extraLightBackgroundGray,
       // gradient: LinearGradient(colors: [Colors.greenAccent, Colors.deepOrangeAccent ]),
@@ -80,7 +80,6 @@ _buildPasswordField() {
       borderRadius: BorderRadius.all(Radius.circular(25.0)),
       color: CupertinoColors.extraLightBackgroundGray,
       // gradient: LinearGradient(colors: [Colors.greenAccent, Colors.deepOrangeAccent ]),
-      border: Border.all(color: Colors.black),
     ),
     child: TextFormField(
       keyboardType: TextInputType.visiblePassword,
@@ -88,7 +87,7 @@ _buildPasswordField() {
       maxLengthEnforced: true,
       maxLength: 20,
       autocorrect: false,
-      textInputAction: TextInputAction.done,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.people,
@@ -105,15 +104,14 @@ _buildBirthDayField() {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(25.0)),
-      color: CupertinoColors.extraLightBackgroundGray,
       // gradient: LinearGradient(colors: [Colors.greenAccent, Colors.deepOrangeAccent ]),
-      border: Border.all(color: Colors.black),
+      color: CupertinoColors.extraLightBackgroundGray,
     ),
     child: TextFormField(
-      keyboardType: TextInputType.visiblePassword,
+      keyboardType: TextInputType.number,
       obscureText: false,
       maxLengthEnforced: true,
-      maxLength: 20,
+      maxLength: 10,
       autocorrect: false,
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -125,5 +123,22 @@ _buildBirthDayField() {
         labelText: 'Data de nascimento (mm/dd/aaaa)',
       ),
     ),
+  );
+}
+
+_alertDialog(BuildContext context){
+  showDialog(
+    context: context,
+    builder: (_) => AlertDialog(
+      title: Text("Sucesso"),
+      content: Text("Convivente cadastrado"),
+      actions: <Widget>[
+        FlatButton(child: Text("Imprimir"), onPressed: () { Navigator.pop(context);},),
+        FlatButton(child: Text("Voltar"), onPressed: () { Navigator.pop(context);},),
+      ],
+
+    ),
+    barrierDismissible: true,
+
   );
 }
